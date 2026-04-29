@@ -1,7 +1,7 @@
 "use client";
 
 import { type FormEvent, useMemo, useState } from "react";
-import { PERSONAS, type PersonaId } from "@/lib/personas";
+import { PERSONAS, type PersonaId, type Persona } from "@/lib/personas";
 
 type ChatMessage = {
   id: string;
@@ -100,7 +100,7 @@ export default function Home() {
         
         <div className="flex flex-col gap-3 mb-10">
           <span className="text-xs font-semibold uppercase tracking-widest text-gray-400">Personas</span>
-          {PERSONAS.map((persona) => {
+          {PERSONAS.map((persona: Persona) => {
             const isActive = persona.id === activePersonaId;
             return (
               <button
@@ -125,7 +125,7 @@ export default function Home() {
         <div className="flex flex-col gap-3 border-t border-gray-200 pt-6">
           <span className="text-xs font-semibold uppercase tracking-widest text-gray-400">Suggestions</span>
           <div className="flex flex-col gap-2">
-            {activePersona.suggestions.map((suggestion) => (
+            {activePersona.suggestions.map((suggestion: string) => (
               <button
                 key={suggestion}
                 type="button"
